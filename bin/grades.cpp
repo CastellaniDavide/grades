@@ -17,26 +17,40 @@
 // Includes
 #include <bits/stdc++.h>
 using namespace std;
+#define DEBUG
 
 // Variabiles
-int N;
+int N, first, last;
+vector <int> grades;
 
 // Main code
 int main()
 {
-  // Cncomment the following lines if you want to read/write from files
-  // freopen("input.txt", "r", stdin);
-  // freopen("output.txt", "w", stdout);
+    // Cncomment the following lines if you want to read/write from files
+    // freopen("input.txt", "r", stdin);
+    // freopen("output.txt", "w", stdout);
 
-  // Input
-  cin >> N;
+    // Input
+    cin >> N;
+    grades.resize(N);
 
-  // Code
-  // ...
+    for (int i = 0; i < N; ++i)
+        cin >> grades[i];
 
-  // Output
-  cout << N << endl;
+    last = N;
+    first = -1;
 
-  // End
-  return 0;
+    while(grades[++first] >= 6){}
+    while(grades[--last] < 6){}
+
+#ifdef DEBUG
+    cout << first << " " << last << endl;
+#endif // DEBUG
+
+    if (last - first > 1)
+        cout << last - first + 1 << endl;
+    else
+        cout << -1 << endl;
+
+    return 0;
 }
